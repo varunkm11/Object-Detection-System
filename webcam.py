@@ -19,3 +19,20 @@ classNames = ["person","bicycle","car","motorbike","aeroplane","bus","train","bo
               "clock","vase","scissors","teddy bear","hair drier","Toothbrush"]
 while True:
     success, img = cap.read()  # read the frame
+    results = model(img, stream = True)
+    for r in results:
+        boxes = r.boxes
+        for box in boxes:
+            # for opeen cv
+            # for bounding box
+            x1,y1,x2,y2 = box.xyxy[0]
+            x1,y1,x2,y2 = int(x1), int(y1), int(x2), int(y2)
+            #cv.2rectangle(imag, (x1,y1), (x2,y2),(255,0,255), 3)
+            #print(x1,y1,x2,y2)
+            
+            # for cvzone
+            w,h = x2 - x1, y2 - y1
+            cvzone.cornerRect(img,((x1,y1,w,h)))
+            # For Confidence
+            conf = math.ceil((box[0]*100))/100
+            print(conf)
