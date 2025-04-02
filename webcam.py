@@ -36,3 +36,7 @@ while True:
             # For Confidence
             conf = math.ceil((box[0]*100))/100
             print(conf)
+            #cvzone.putTextrect(img,f'{conf}',(max(0,x1),max(35,y1)))
+            #for class(object detection)
+            cls = int(box.cls[0])
+            print()
