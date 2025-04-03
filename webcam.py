@@ -40,3 +40,7 @@ while True:
             #for class(object detection)
             cls = int(box.cls[0])
             print()
+            cvzone.puutTextRect(img,f'{classNames[cls]}{conf}',(max(0,x1),max(35,y1)),scale = 1,thickness = 1)
+            cv2.ishow("image",img)
+            cv2.waitkey(1)
+            
